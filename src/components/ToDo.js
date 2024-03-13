@@ -10,8 +10,8 @@ const ToDo = ({ text, updateMode, deleteToDo }) => {
 
       <div className='text'>{text}</div>
       <div className='icons'>
-        <MdEdit className="icon" />
-        <MdDelete className="icon" />
+        <MdEdit className="icon" onClick={updateMode} />
+        <MdDelete className="icon" onClick={deleteToDo} />
 
       </div>
 

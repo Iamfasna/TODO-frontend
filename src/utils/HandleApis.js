@@ -25,5 +25,28 @@ const addToDo = (text, setText, setToDo) => {
     });
 };
 
+const updateToDo = (toDoId, text, setToDo, setText, setIsUpdating) => {
+  axios.post(`${baseUrl}/update`, { _id: toDoId, text })
+    .then((data) => {
+      setText("");
+      setIsUpdating(false)
+      getAllToDo(setToDo);
+    })
+    .catch((error) => {
+      console.error('Error updating ToDo:', error);
+    });
+};
 
-export { getAllToDo, addToDo }
+const deleteToDo = (toDoId, setToDo) => {
+  axios.post(`${baseUrl}/delete`, { _id: toDoId })
+    .then((data) => {
+      console.log(data)
+      getAllToDo(setToDo);
+    })
+    .catch((error) => {
+      console.error('Error deleting ToDo:', error);
+    });
+};
+
+
+export { getAllToDo, addToDo, updateToDo, deleteToDo }
